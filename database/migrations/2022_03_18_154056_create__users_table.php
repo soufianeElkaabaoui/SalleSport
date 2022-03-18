@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('prenom');
             $table->string('email')->nullable();
             $table->string('password')->nullable();
-            $table->integer('idCour')->nullable();
+            $table->unsignedBigInteger('idCour')->nullable();
             $table->foreign('idCour')->references('id')->on('_Coures');
             $table->timestamps();
         });
