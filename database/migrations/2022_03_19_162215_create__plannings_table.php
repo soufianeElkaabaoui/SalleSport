@@ -18,9 +18,9 @@ class CreatePlanningsTable extends Migration
             $table->date('date_seance');
             $table->time('start_time');
             $table->time('end_time');
-            $table->integer('idCour');
-            $table->integer('idSalle');
-            $table->integer('idUser');
+            $table->unsignedBigInteger('idCour');
+            $table->unsignedBigInteger('idSalle');
+            $table->unsignedBigInteger('idUser');
             $table->foreign('idCour')->references('id')->on('_Coures');
             $table->foreign('idSalle')->references('id')->on('_Salles');
             $table->foreign('idUser')->references('id')->on('_Users');

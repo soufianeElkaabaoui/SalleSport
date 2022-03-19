@@ -14,9 +14,10 @@ class CreateCouresTable extends Migration
     public function up()
     {
         Schema::create('_coures', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // pour ajouter une colonne id de type bigint(20) unsigned primary key auto increment.
             $table->string('nom');
-            $table->timestamps();
+            $table->string('photopath')->nullable(); // pour ajouter une colonne de type varchar(255) qui accept des valeurs nulles.
+            $table->timestamps(); // pour ajouter 2 colonnes (created_at et updated_at) de type timestamps qui acceptent des valeurs nulles.
         });
     }
 
