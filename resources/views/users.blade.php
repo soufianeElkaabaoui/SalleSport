@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+    @if(session('adding'))
+	    <div class="alert alert-success">
+            <strong>Succés!</strong> {{session('adding')}}
+        </div>
+    @endif
     <table border=1>
         <head>
             <th>
@@ -33,5 +38,10 @@
             @endforeach
         </body>
     </table>
+    @if (session('nom'))
+        <div class="alert alert-success">
+            <strong>Bienvenue M. </strong> {{session('nom')}}
+        </div>
+    @endif
 </body>
 </html>

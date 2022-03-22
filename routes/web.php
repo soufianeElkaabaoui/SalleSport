@@ -16,6 +16,11 @@ use App\Http\Controllers\userController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
-Route::get('/users', [userController::class, 'index']); // raccourci pour fair appeler la fonction index du controller userController.
+Route::post('/login', [userController::class, 'login']);
+
+Route::get('/users', [userController::class, 'index']); // raccourci pour faire appeler la fonction index du controller userController.
+
+Route::view('/adduser', 'adduser'); // raccourci pour faire lier une adresse url avec une page html(view).
+Route::post('/adduser', [userController::class, 'adduser']); // raccourci pour faire appeler une methode d'insertion d'un utilisateur.
