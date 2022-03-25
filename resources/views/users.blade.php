@@ -26,6 +26,9 @@
             <th>
                 password
             </th>
+            <th colspan="2">
+                Actions
+            </th>
         </head>
         <body>
             @foreach ($users as $user)
@@ -34,6 +37,8 @@
                     <td>{{$user->nom . " " . $user->prenom}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->password}}</td>
+                    <td><a href="/edituser/{{$user->id}}">edit</a></td>
+                    <td><a href="deleteuser/{{$user->id}}">delete</a></td>
                 </tr>
             @endforeach
         </body>

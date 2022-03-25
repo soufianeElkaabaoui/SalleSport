@@ -24,3 +24,8 @@ Route::get('/users', [userController::class, 'index']); // raccourci pour faire 
 
 Route::view('/adduser', 'adduser'); // raccourci pour faire lier une adresse url avec une page html(view).
 Route::post('/adduser', [userController::class, 'adduser']); // raccourci pour faire appeler une methode d'insertion d'un utilisateur.
+
+Route::get('/edituser/{id}', [userController::class, 'edituserGet']);
+Route::put('/edituser', [userController::class, 'edituserPost']);
+
+Route::get('deleteuser/{id}', [userController::class, 'deleteuser']);

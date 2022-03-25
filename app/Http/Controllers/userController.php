@@ -20,24 +20,24 @@ class userController extends Controller
     // pour l'authentification d'un utilisateur:
     public function login(Request $loggedUser)
     {
-        try 
+        try
         {
             $user = _user::where('email', $loggedUser->email)
                             ->where('password', $loggedUser->password)
                             ->get(); // select * from _users where email = '' and password = ''
             if (count($user) > 0)
             {
-                $loggedUser->session()->put('email', $user[0]['email']);   
-                $loggedUser->session()->put('password', $user[0]['password']);  
-                $loggedUser->session()->flash('nom', $user[0]['nom'] . " " . $user[0]['prenom']);  
+                $loggedUser->session()->put('email', $user[0]['email']);
+                $loggedUser->session()->put('password', $user[0]['password']);
+                $loggedUser->session()->flash('nom', $user[0]['nom'] . " " . $user[0]['prenom']);
                 return redirect('/users');
             }
             else
             {
                 return 'nothing';
             }
-        } 
-        catch (\Throwable $th) 
+        }
+        catch (\Throwable $th)
         {
             echo $th;
         }
@@ -61,5 +61,39 @@ class userController extends Controller
             echo $th;
         }
         return $user;
+    }
+    // afficher la page de modification:
+    public function edituserGet($userid)
+    {
+        $updatedUser = _user::find($userid);
+        return view('edituser', ['user' => $updatedUser]);
+    }
+    // modifier un utilisateur:
+    public function edituserPost(Request $modifiedUserData)
+    {
+        $modifiedUser = _user::find($modifiedUserData->id); // pour trouver un utilisateur avec son id(///PRIMARY KEY).
+        $modifiedUser->nom = $modifiedUserData->LName;
+        $modifiedUser->prenom = $modifiedUserData->FName;
+        $modifiedUser->email = $modifiedUserData->Email;
+        $modifiedUser->password = $modifiedUserData->Password;
+        $result = $modifiedUser->save(); // dans ce cas, cette fonction va nous permettre de faire la modification.
+        if ($result) {
+            // session variable ...
+            return redirect('/users');
+        } else {
+            return ['result' => "Date hasn't been updated"];
+        }
+    }
+    // supprimer un utilisateur:
+    public function deleteuser($userid)
+    {
+        $deletedUser = _user::find($userid);
+        $result = $deletedUser->delete();
+        if ($result) {
+	        // session variable ...
+            return redirect('/users');
+        } else {
+            return ['result' => "Date hasn't been updated"];
+        }
     }
 }
