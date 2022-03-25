@@ -36,7 +36,8 @@ After Cloning this repository to your host
 in directory
 `composer install`
 Or
-`composer update`
+`<pre><code>composer install
+</code></pre>`
 
 
 ### Premium Partners
