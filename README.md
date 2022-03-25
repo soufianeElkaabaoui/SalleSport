@@ -34,10 +34,18 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 ## Installation instructions
 After Cloning this repository to your host
 in directory
-`composer install`
+<pre><code>composer update</code></pre>
 Or
-`composer install`
 <pre><code>composer install</code></pre>
+Edit your database informations in .env file
+<pre><code>php artisan key:generate</code></pre>
+
+Make a clean for the config and cache files
+<pre><code>php artisan config:clear</code></pre>
+<pre><code>php artisan cache:clear</code></pre>
+
+Create table in  your local host
+<pre><code>php artisan migrate</code></pre>
 
 ### Premium Partners
 
