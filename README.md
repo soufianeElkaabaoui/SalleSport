@@ -40,11 +40,11 @@ Or
 Edit your database informations in .env file
 <pre><code>php artisan key:generate</code></pre>
 
-Make a clean for the config and cache files
+Clean up configuration and cache files
 <pre><code>php artisan config:clear</code></pre>
 <pre><code>php artisan cache:clear</code></pre>
 
-Create table in  your local host
+Create all tables in your localhost
 <pre><code>php artisan migrate</code></pre>
 
 ### Premium Partners
