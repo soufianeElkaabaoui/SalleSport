@@ -31,6 +31,22 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
+## Installation instructions
+After Cloning this repository to your host
+in directory
+<pre><code>composer update</code></pre>
+Or
+<pre><code>composer install</code></pre>
+Edit your database informations in .env file
+<pre><code>php artisan key:generate</code></pre>
+
+Clean up configuration and cache files
+<pre><code>php artisan config:clear</code></pre>
+<pre><code>php artisan cache:clear</code></pre>
+
+Create all tables in your localhost
+<pre><code>php artisan migrate</code></pre>
+
 ### Premium Partners
 
 - **[Vehikl](https://vehikl.com/)**
