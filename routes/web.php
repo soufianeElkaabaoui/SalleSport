@@ -29,3 +29,6 @@ Route::get('/edituser/{id}', [userController::class, 'edituserGet']);
 Route::put('/edituser', [userController::class, 'edituserPost']);
 
 Route::get('deleteuser/{id}', [userController::class, 'deleteuser']);
+
+Route::view('uploadfile', 'uploadfile');
+Route::post('/uploadfile', [userController::class, 'getFile']);

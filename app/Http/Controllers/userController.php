@@ -96,4 +96,24 @@ class userController extends Controller
             return ['result' => "Date hasn't been updated"];
         }
     }
+
+    public function getFile(Request $request)
+    {
+        // $coursSelected = _coures::find($id);
+        if ($request->hasFile('photouploaded')) {
+            $nameFile = $request->photouploaded->path();
+        }else{
+            $nameFile = "no photo";
+        }
+        // $guessExtension = $request->file('photopath')->guessExtension();
+        // $fullPath = 'Storage/app/imageCours/' . $nameFile . $guessExtension;
+        // $request->file('photopath')->storeAs('imageCours',$nameFile .'.'. $guessExtension);
+        // $coursSelected->update([
+        //     'nom' => $request->nom,
+        //     'photopath' => $fullPath
+        // ]);
+
+        // return redirect()->route('cours_view.index');
+        return $nameFile;
+    }
 }
