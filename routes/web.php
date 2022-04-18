@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 Route::post('/login', [userController::class, 'login']);
 
-Route::get('/users', [userController::class, 'index']); // raccourci pour faire appeler la fonction index du controller userController.
+//Route::get('/users', [userController::class, 'index']); // raccourci pour faire appeler la fonction index du controller userController.
 
 Route::view('/adduser', 'adduser'); // raccourci pour faire lier une adresse url avec une page html(view).
 Route::post('/adduser', [userController::class, 'adduser']); // raccourci pour faire appeler une methode d'insertion d'un utilisateur.
@@ -29,3 +29,16 @@ Route::get('/edituser/{id}', [userController::class, 'edituserGet']);
 Route::put('/edituser', [userController::class, 'edituserPost']);
 
 Route::get('deleteuser/{id}', [userController::class, 'deleteuser']);
+
+
+Route::get('/dashboard', [userController::class, 'coach_index']);
+
+Route::get('/coach',[userController::class, 'index']);
+
+Route::get('/cours',function() {
+    return view('cours');
+});
+
+Route::get('/salle',function() {
+    return view('salle');
+});

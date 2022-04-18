@@ -1,60 +1,72 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>Login Page</title>
-   <!--Made with love by Mutiullah Samim -->
-   
-	<!--Bootsrap 4 CDN-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-    <!--Fontawesome CDN-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<!--Custom styles-->
-	@push('css')
-	<link rel="stylesheet" href="resources/css/login.css"/>
-	@endpush
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<!------ Include the above in your HEAD tag ---------->
-	
-	<div class="container">
-		<div id="login-row" class="row justify-content-center align-items-center">
-			<div id="login-column" class="col-md-6">
-				<div class="box">
-					<div class="shape1"></div>
-					<div class="shape2"></div>
-					<div class="shape3"></div>
-					<div class="shape4"></div>
-					<div class="shape5"></div>
-					<div class="shape6"></div>
-					<div class="shape7"></div>
-					<div class="float">
-						<form class="form" action="/login" method="POST">
-							@csrf
-							<div class="form-group">
-								<label for="email" class="text-black">Email:</label><br>
-								<input type="text" name="email" id="email" class="form-control">
-							</div>
-							<div class="form-group">
-								<label for="password" class="text-black">Password:</label><br>
-								<input type="text" name="password" id="password" class="form-control">
-							</div>
-							<div class="form-group">
-								<input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="overlay">
+    <form action="/login" method="POST">
+        @csrf
+        <!--   con = Container  for items in the form-->
+        <div class="con">
+            <!--     Start  header Content  -->
+            <header class="head-form">
+                <h2>E-Fitness</h2>
+                <!--     A welcome message or an explanation of the login form -->
+                <p>login here</p>
+            </header>
+            <!--     End  header Content  -->
+            <br>
+            <div class="field-set">
+
+                <!--   user name -->
+                <span class="input-item">
+           <i class="fa fa-user-circle"></i>
+         </span>
+                <!--   user name Input-->
+                <input class="form-input" name="email" id="txt-input" type="text" placeholder="@UserName" required>
+
+                <br>
+                <!--   Password -->
+                <span class="input-item">
+        <i class="fa fa-key"></i>
+       </span>
+                <!--   Password Input-->
+                <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required>
+                <!--      Show/hide password  -->
+                <span>
+        <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
+     </span>
+                <br>
+                <!--        buttons -->
+                <!--      button LogIn -->
+                <button class="log-in" type="submit" name="submit"> Log In </button>
+            </div>
+
+            <!--   other buttons -->
+            <div class="other">
+                <!--      Forgot Password button-->
+                <button class="btn submits frgt-pass">Forgot Password</button>
+                <!--     Sign Up button -->
+                <button class="btn submits sign-up">Sign Up
+                    <!--         Sign Up font icon -->
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </button>
+                <!--      End Other the Division -->
+            </div>
+            <!--   End Conrainer  -->
+        </div>
+        <!-- End Form -->
+    </form>
+</div>
+<!-- =========== Scripts =========  -->
+<script src="{{ asset('js/login.js') }}"></script>
 </body>
 </html>
