@@ -15,7 +15,15 @@ class userController extends Controller
         // return view('users', ['users' => $usersRows]); // pour appeler la page resources/views/users.blade.php et passer le paramétre necessite.
         //------------------
         $usersRows = _user::all();
-        return view('users', ['users' => $usersRows]);
+        return view('coach', ['users' => $usersRows]);
+    }
+
+    public function coach_index()
+    {
+        //------------------
+        $usersRows = _user::all();
+        $userCount = count($usersRows);
+        return view('dashboard', ['users' => $usersRows,'countUsers' => $userCount]);
     }
     // pour l'authentification d'un utilisateur:
     public function login(Request $loggedUser)
@@ -30,7 +38,7 @@ class userController extends Controller
                 $loggedUser->session()->put('email', $user[0]['email']);
                 $loggedUser->session()->put('password', $user[0]['password']);
                 $loggedUser->session()->flash('nom', $user[0]['nom'] . " " . $user[0]['prenom']);
-                return redirect('/users');
+                return redirect('/dashboard');
             }
             else
             {

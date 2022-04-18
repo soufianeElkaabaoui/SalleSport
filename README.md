@@ -38,6 +38,8 @@ in directory
 Or
 <pre><code>composer install</code></pre>
 Edit your database informations in .env file
+Copy .env file and generate it
+<pre><code>copy .env.exemple .env</code></pre>
 <pre><code>php artisan key:generate</code></pre>
 
 Clean up configuration and cache files
