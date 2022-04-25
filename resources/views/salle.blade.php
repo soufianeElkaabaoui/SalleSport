@@ -12,92 +12,14 @@
                         <thead>
                             <tr>
 								<td>N°</td>
-                                <td>Description</td>
-                                <td>Prix</td>
+                                <td>Nom Salle</td>
+                                <td>Capacity</td>
                                 <td>Actions</td>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-								<td>1</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>2</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>3</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>4</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>5</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>6</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>7</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>8</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
+                           
                         </tbody>
                     </table>
                 </div>
@@ -105,17 +27,19 @@
                 <!-- ================= New Customers ================ -->
                 <div class="recentCustomers">
                     <div class="cardHeader">
-                        <h2>New Cours</h2>
+                        <h2>New Salle</h2>
                     </div>
 
-                    <form id="frm_AddCours" method="POST">
-						<!--   user name -->
+                    {{-- <form> --}}
+						<!--   Salle name -->
 						<div>
 							<span class="input-item">
 							   <i class="fa fa-user-circle"></i>
 							 </span>
-							<!--   user name Input-->
-							 <input class="form-input" id="txt-input" type="text" placeholder="Description" required>
+							<!--   salle name Input-->
+                            <input id='idSalle' type="hidden"/>
+							 <input class="form-input" id="nom-input" type="text" name="nom" placeholder="Nom Salle" >
+                             <span style="color:red; margin:10px" id="nom_error"></span>
 						</div>
 						
 						<!--   user name -->
@@ -124,30 +48,15 @@
 							   <i class="fa fa-user-circle"></i>
 							 </span>
 							<!--   user name Input-->
-							 <input class="form-input" id="txt-input" type="text" placeholder="Prix" required>
-						</div>
-						
-						<!--   user name -->
-						<div>
-							<span class="input-item">
-							   <i class="fa fa-user-circle"></i>
-							 </span>
-							<!--   user name Input-->
-							 <input class="form-input" id="txt-input" type="text" placeholder="" required>
-						</div>
-						
-						<!--   user name -->
-						<div>
-							<span class="input-item">
-							   <i class="fa fa-user-circle"></i>
-							 </span>
-							<!--   user name Input-->
-							 <input class="form-input" id="txt-input" type="text" placeholder="@UserName" required>
+							 <input class="form-input" id="capacity-input" type="text" placeholder="Capicty" name="capacity" >
+                             <span style="color:red; margin:10px" id="capacity_error"></span>
 						</div>
                         <div>
-                            <button type="submit" class="log-in"> Ajouter </button>
+                            <button id="btn_save" class="log-in" onclick="AddSalle();"> Ajouter </button>
+                            <button id="btn_update" class="log-in" onclick="UpdateSalle()">Update </button>
                         </div>
-					</form>
+					{{-- </form> --}}
                 </div>
             </div>
 @endsection
+

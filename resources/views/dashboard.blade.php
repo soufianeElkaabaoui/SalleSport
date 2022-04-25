@@ -39,101 +39,59 @@
             </div>
 
             <!-- ================ Order Details List ================= -->
-            <div class="details">
+            <div class="details timetable-page">
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Planing</h2>
                         <a href="#" class="btn">View All</a>
                     </div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Payment</td>
-                                <!-- <td>Status</td> -->
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <!-- <td><span class="status delivered">Delivered</span></td> -->
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <!-- <td><span class="status pending">Pending</span></td> -->
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <!-- <td><span class="status return">Return</span></td> -->
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <!-- <td><span class="status inProgress">In Progress</span></td> -->
-                            </tr>
-
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <!-- <td><span class="status delivered">Delivered</span></td> -->
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <!-- <td><span class="status pending">Pending</span></td> -->
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <!-- <td><span class="status return">Return</span></td> -->
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <!-- <td><span class="status inProgress">In Progress</span></td> -->
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div id="coach_name"></div>
+    <div id="container" class="container-planing">
+        <div>///</div>
+        <div class="item"> 8->8:30 </div>
+        <div class="item"> 8:30->9  </div>
+        <div class="item"> 9->9:30 </div>
+        <div class="item"> 9:30->10 </div>
+        <div class="item"> 10->10:30 </div>
+        <div class="item"> 10:30->11 </div>
+        <div class="item"> 11->11:30 </div>
+        <div class="item"> 11:30->12 </div>
+        <div class="item"> 12->12:30 </div>
+        <div class="item"> 12:30->13 </div>
+        <div class="item"> 13->13:30 </div>
+        <div class="item"> 13:30->14 </div>
+        <div class="item"> 14->14:30 </div>
+        <div class="item"> 14:30->15 </div>
+        <div class="item"> 15->15:30 </div>
+        <div class="item"> 15:30->16</div>
+        <div class="item"> 16->16:30</div>
+        <div class="item"> 16:30->17 </div>
+        <div class="item"> 17->17:30 </div>
+        <div class="item"> 17:30->18</div>
+        <div class="item"> 18->18:30 </div>
+        <div class="item"> 18:30->19</div>
+        <div class="item"> 19->19:30</div>
+        <div class="item"> 19:30->20</div>
+        <div class="item"> 20->20:30</div>
+        <div class="item"> 20:30->21</div>
+        <div class="item"> 21->21:30</div>
+        <div class="item"> 21:30->22</div>
+        <div class="item"> 22->22:30</div>
+        <div class="item"> 22:30->23</div>
+        <div class="item"> 23->23:30</div>
+        <div class="item"> 23:30->00:00</div>
+        <div class="monday">monday</div>
+        <div class="tuesday">tuesday</div>
+        <div class="wednesday">wednesday</div>
+        <div class="thursday">thursday</div>
+        <div class="friday">friday</div>
+        <div class="saturday">saturday</div>
+        <div class="sunday">sunday</div>
+    </div>
                 </div>
 
                 <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Coaches</h2>
-                    </div>
-
-                    <table>
-                        @foreach ($users as $user)
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{{ asset('imgs/customer02.jpg') }}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>{{$user->nom}} <br> <span>{{$user->prenom}}</span></h4>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </table>
-                </div>
+                
             </div>
 @endsection

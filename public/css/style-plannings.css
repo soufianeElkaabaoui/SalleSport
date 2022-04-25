@@ -1,0 +1,40 @@
+.container-planing {
+    background-color: blueviolet;
+    display: grid;
+    grid-template-columns: repeat(33, 1fr);
+    grid-template-rows: 1fr [Monday] 1fr [Tuesday] 1fr [Wednesday] 1fr [Thursday] 1fr [Friday] 1fr [Saturday] 1fr [Sunday] 1fr;
+}
+.container-planing .item {
+    font-size: 10px;
+}
+.monday {
+    grid-column-start: 1;
+    grid-row-start: Monday;
+}
+.tuesday {
+    grid-column-start: 1;
+    grid-row-start: Tuesday;
+}
+.wednesday {
+    grid-column-start: 1;
+    grid-row-start: Wednesday;
+}
+.thursday {
+    grid-column-start: 1;
+    grid-row-start: Thursday;
+}
+.friday {
+    grid-column-start: 1;
+    grid-row-start: Friday;
+}
+.saturday {
+    grid-column-start: 1;
+    grid-row-start: Saturday;
+}
+.sunday {
+    grid-column-start: 1;
+    grid-row-start: Sunday;
+}
+/* div:not(div.container) {
+    border: 2px solid;
+} */

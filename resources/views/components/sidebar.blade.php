@@ -39,7 +39,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="/plannings">
                         <span class="icon">
                             <ion-icon name="calendar-outline"></ion-icon>
                         </span>

@@ -45,32 +45,70 @@ $(document).ready(function($){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
-    let currentDate = new Date();
-    Begin_week_date = defineBeginWeek(currentDate);
+    debugger
+    Coaches = getCoaches();
+    debugger
+    if (Coaches.length > 0) {
+        SelectedCoachIndex = 0;
+        coach_name.textContent = Coaches[SelectedCoachIndex].nom;
+        let currentDate = new Date();
+        Begin_week_date = defineBeginWeek(currentDate);
+        changePlanning(Coaches[SelectedCoachIndex].id);
+    }
 });
-// get all plannings for a specific date:
-function getPlannings(selectedDate, coach)
-{
-    let planning_of_date = [];
+function getSalles(selectedDate, coach) {
+    let salles = [];
 
     $.ajax({
         type:"GET",
-        url: "{{ url('plannigs') }}",
+        url: "/salles-planning",
+        async: false,
         data: {
             givenDate : selectedDate,
             coachID : coach,
         },
         dataType: 'json',
-        success: function(Plannings){
-            planning_of_date = Plannings;
+        success: function(givenSalles){
+            // debugger
+            salles = givenSalles;
         },
         error: function (request, status, error) {
             console.log(request.responseText);
         }
     });
 
-    return planning_of_date;
+    return salles;
+}
+function getCoures(selectedDate, coach) {
+    let Coures = [];
+
+    $.ajax({
+        type:"GET",
+        url: "/coures-planning",
+        async: false,
+        data: {
+            givenDate : selectedDate,
+            coachID : coach,
+        },
+        dataType: 'json',
+        success: function(givenCoures){
+            // debugger
+            Coures = givenCoures;
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+        }
+    });
+
+    return Coures;
+}
+// get all plannings for a specific date:
+function getPlannings(selectedDate, coach)
+{
+    let salles = getSalles(selectedDate, coach);
+    let coures = getCoures(selectedDate, coach);
+
+    return [salles, coures];
 }
 function defineBeginWeek(currentDay)
 {
@@ -88,38 +126,53 @@ function defineBeginWeek(currentDay)
 }
 function changePlanning(selectedCoachIndex)
 {
+    $(".seances").remove();
     for (let i = 0; i < 7; i++) {
         let selectedDate = new Date(Begin_week_date);
         selectedDate.setDate(Begin_week_date.getDate() + i);
-        let plannings = getPlannings(selectedDate, selectedCoachIndex);
-        plannings.forEach(planning => {
-            let divSeance = document.createElement("div");
-            divSeance.textContent = planning.courname + " " + planning.sallename;
-            divContainer.appendChild(divContainer);
-        });
-
+        const offset = selectedDate.getTimezoneOffset()
+        selectedDate = new Date(selectedDate.getTime() - (offset*60*1000))
+        let plannings = getPlannings(selectedDate.toISOString().split('T')[0], selectedCoachIndex);
+        // debugger
+        if (plannings[0].length > 0) {
+            for (let j = 0; j < plannings[0].length; j++) {
+                let divSeance = document.createElement("div");
+                divSeance.textContent = plannings[1][j].nom + " " + plannings[0][j].nom;
+                divSeance.style.gridColumnStart = mapp_Time_GridLine[plannings[1][j].plannings.start_time];
+                divSeance.style.gridColumnEnd = mapp_Time_GridLine[plannings[1][j].plannings.end_time];
+                divSeance.style.gridRowStart = DaysOfWeek[(i!=6)?i+1:0];
+                divSeance.classList.add('seances');
+                container.appendChild(divSeance);
+            }
+        }
     }
 }
 function getCoaches() {
-
+    let givenCoaches;
     $.ajax({
         type:"GET",
-        url: "{{ url('coaches') }}",
+        url: "/coaches",
+        async: false,
         dataType: 'json',
         success: function(coaches){
-            Coaches = coaches;
+            // debugger
+            givenCoaches = coaches;
         },
         error: function (request, status, error) {
+            debugger
             console.log(request.responseText);
         }
     });
-
-    return Coaches;
+    return givenCoaches;
 }
 setInterval(() => {
-    SelectedCoachIndex++;
-    if (SelectedCoachIndex == Coaches.length) {
-        SelectedCoachIndex = 0;
+    // debugger
+    if (Coaches.length > 0) {
+        SelectedCoachIndex++;
+        if (SelectedCoachIndex == Coaches.length) {
+            SelectedCoachIndex = 0;
+        }
+        coach_name.textContent = Coaches[SelectedCoachIndex].nom;
+        changePlanning(Coaches[SelectedCoachIndex].id);
     }
-    changePlanning(SelectedCoachIndex);
 }, 10000);

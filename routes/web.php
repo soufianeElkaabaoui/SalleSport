@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\SalleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // pour interagir avec la base de données.
 use App\Http\Controllers\userController;
+use App\Http\Controllers\PlanningController;
+use App\Http\Controllers\CoureController;
+use App\Http\Controllers\SallePlaning;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +45,15 @@ Route::get('/cours',function() {
     return view('cours');
 });
 
-Route::get('/salle',function() {
-    return view('salle');
-});
+Route::get('/salles-planning', [SalleController::class, 'getSallesByPlanning']);
+Route::get('/coures-planning', [CoureController::class, 'getCouresByPlanning']);
+Route::get('/plannings', [PlanningController::class, 'index']);
+Route::get('/coaches', [userController::class, 'coaches']);
+//Start Routes Salle
+Route::get('/salle',[SalleController::class,'Create']);
+Route::get('/salle/all', [SalleController::class,'AllSalle']);
+Route::post('/salle/Add_Salle/',[SalleController::class,'Add_Salle']);
+Route::get('/salle/editSalle/{id}', [SalleController::class,'EditSalle']);
+Route::post('/salle/Update_Salle/{id}',[SalleController::class,'UpdateSalle']);
+Route::get('/salle/DeleteSalle/{id}',[SalleController::class,'DeleteSalle']);
+//End Routes Salle

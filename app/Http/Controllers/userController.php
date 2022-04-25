@@ -25,6 +25,13 @@ class userController extends Controller
         $userCount = count($usersRows);
         return view('dashboard', ['users' => $usersRows,'countUsers' => $userCount]);
     }
+    public function coaches()
+    {
+        //------------------
+        $coaches = _user::all();
+
+        return $coaches;
+    }
     // pour l'authentification d'un utilisateur:
     public function login(Request $loggedUser)
     {
