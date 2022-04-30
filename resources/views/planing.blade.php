@@ -116,10 +116,13 @@
                              <span style="color:red; margin:10px" id="idCoach_error"></span>
 						</div>
                         <div>
-                            <button class="log-in" id="btn_save">Ajouter</button>
-                            <!-- <button class="log-in" id="btn_update">Modifier</button> -->
+                            <button onclick="AddPlaning()" class="log-in" id="btn_save">Ajouter</button>
+                            <button onclick="UpdatePlaning()" class="log-in" id="btn_update">Modifier</button>
                         </div>
 					<!-- </form> -->
                 </div>
             </div>
+@endsection
+@section('scripts')
+<script src="{{asset('js/planingCrud.js')}}"></script>
 @endsection

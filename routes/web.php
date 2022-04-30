@@ -48,6 +48,12 @@ Route::get('/cours',function() {
 
 //Start Planing Router
 Route::get('/planing',[PlanningController::class, 'index_planingCurd']);
+Route::get('/planing/all',[PlanningController::class, 'getAllPlaning']);
+Route::post('/planing/add_planing/',[PlanningController::class, 'AddPlaning']);
+Route::get('/planing/editPlaning/{id}',[PlanningController::class, 'editPlaning']);
+Route::post('/planing/updatePlaning/{id}',[PlanningController::class,'updatePlaning']);
+Route::get('/planing/deletePlaning/{id}',[PlanningController::class,'deletePlaning']);
+Route::get('/planing/hebdo',[PlanningController::class, 'getPlaningHebdo']);
 //End Planing Router
 
 Route::get('/salles-planning', [SalleController::class, 'getSallesByPlanning']);

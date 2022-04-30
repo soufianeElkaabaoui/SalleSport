@@ -13,8 +13,8 @@
     <script src="{{asset('sweetalert2/sweetalert2.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/style-plannings.css')}}">
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-    <script src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>
-    <script src="{{asset('js/planning.js')}}"></script>
+   
+    @yield('scripthead') 
 </head>
 
 <body>
