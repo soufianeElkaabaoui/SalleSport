@@ -61,4 +61,10 @@ class SalleController extends Controller
         $data=_salle::findOrFail($id)->delete(); 
         return response()->json($data);
     }
+
+    public function getAllSalles()
+    {
+        $AllSalles = _salle::all();
+        return $AllSalles;
+    }
 }

@@ -12,4 +12,11 @@ class PlanningController extends Controller
     {
         return view('plannings');
     }
+
+    public function index_planingCurd() {
+        $courses = (new CoureController())->getCours();
+        $coaches = (new userController())->coaches();
+        $salles = (new SalleController())->getAllSalles();
+        return view('planing',['AllCours' => $courses,'AllCoaches' => $coaches,'AllSalles' => $salles]);
+    }
 }

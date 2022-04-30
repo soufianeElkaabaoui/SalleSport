@@ -131,4 +131,9 @@ class userController extends Controller
         // return redirect()->route('cours_view.index');
         return $nameFile;
     }
+
+    public function logoutUser(Request $request) {
+        $request->session()->forget('nom');
+        return redirect('/');
+     }
 }

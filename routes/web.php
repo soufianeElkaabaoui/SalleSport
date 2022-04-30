@@ -23,6 +23,7 @@ Route::get('/', function () {
     return view('login');
 });
 Route::post('/login', [userController::class, 'login']);
+Route::get('/logout',[userController::class, 'logoutUser']);
 
 //Route::get('/users', [userController::class, 'index']); // raccourci pour faire appeler la fonction index du controller userController.
 
@@ -44,6 +45,10 @@ Route::get('/coach',[userController::class, 'index']);
 Route::get('/cours',function() {
     return view('cours');
 });
+
+//Start Planing Router
+Route::get('/planing',[PlanningController::class, 'index_planingCurd']);
+//End Planing Router
 
 Route::get('/salles-planning', [SalleController::class, 'getSallesByPlanning']);
 Route::get('/coures-planning', [CoureController::class, 'getCouresByPlanning']);

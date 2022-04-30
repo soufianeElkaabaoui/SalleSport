@@ -39,7 +39,7 @@
             </li>
 
             <li>
-                <a href="/plannings">
+                <a href="/planing">
                         <span class="icon">
                             <ion-icon name="calendar-outline"></ion-icon>
                         </span>
@@ -57,16 +57,7 @@
             </li>
 
             <li>
-                <a href="#">
-                        <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
-                        </span>
-                    <span class="title">Settings</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
+                <a href="/logout">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
