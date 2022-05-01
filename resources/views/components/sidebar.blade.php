@@ -30,11 +30,11 @@
             </li>
 
             <li>
-                <a href="/cours">
+                <a href="/Cour">
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
-                    <span class="title">Cours</span>
+                    <span class="title">Cour</span>
                 </a>
             </li>
 

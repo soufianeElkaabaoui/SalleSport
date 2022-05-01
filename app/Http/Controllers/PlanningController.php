@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\_user;
-use App\Models\_planning;
+use App\Models\User;
+use App\Models\Planning;
 
 class PlanningController extends Controller
 {
@@ -15,16 +15,16 @@ class PlanningController extends Controller
     }
 
     public function index_planingCurd() {
-        $courses = (new CoureController())->getCours();
+        $Coures = (new CoureController())->getCour();
         $coaches = (new userController())->coaches();
         $salles = (new SalleController())->getAllSalles();
-        return view('planing',['AllCours' => $courses,'AllCoaches' => $coaches,'AllSalles' => $salles]);
+        return view('planing',['AllCour' => $Coures,'AllCoaches' => $coaches,'AllSalles' => $salles]);
     }
     public function getAllPlaning() {
-        $AllPlaning = _planning::select('_plannings.id as idPlaning','date_seance','start_time','end_time','_coures.nom as Cnom','_salles.nom as SNom','_users.nom as nomCoach')
-        ->join('_coures','_coures.id','_plannings.idCour')
-        ->join('_salles','_salles.id','_plannings.idSalle')
-        ->join('_users','_users.id','_plannings.idUser')
+        $AllPlaning = Planning::select('Plannings.id as idPlaning','date_seance','start_time','end_time','Cours.nom as Cnom','Salles.nom as SNom','Users.nom as nomCoach')
+        ->join('Cours','Cours.id','Plannings.idCour')
+        ->join('Salles','Salles.id','Plannings.idSalle')
+        ->join('Users','Users.id','Plannings.idUser')
         ->get();
         return $AllPlaning;
     }
@@ -34,15 +34,15 @@ class PlanningController extends Controller
             'date' => 'required',
             'start' => 'required',
             'endT' => 'required',
-            'cours' => 'required',
+            'Cour' => 'required',
             'salle' => 'required',
             'coach' => 'required'
         ]);
-        $data = _planning::insert([
+        $data = Planning::insert([
             'date_seance'  => $request->date,
             'start_time'   => $request->start,
             'end_time'     => $request->endT,
-            'idCour'       => $request->cours,
+            'idCour'       => $request->Cour,
             'idSalle'      => $request->salle,
             'idUser'       => $request->coach
         ]);
@@ -51,7 +51,7 @@ class PlanningController extends Controller
     //Fonction pour afficher les informations d'une planing
     public function editPlaning($id)
     {
-        $data = _planning::findOrFail($id);
+        $data = Planning::findOrFail($id);
         return response()->json($data);
     }
     //Fonction pour envoyer les modification d'une planing
@@ -61,15 +61,15 @@ class PlanningController extends Controller
             'date' => 'required',
             'start' => 'required',
             'endT' => 'required',
-            'cours' => 'required',
+            'Cour' => 'required',
             'salle' => 'required',
             'coach' => 'required'
         ]);
-        $data = _planning::findOrFail($id)->update([
+        $data = Planning::findOrFail($id)->update([
             'date_seance'  => $request->date,
             'start_time'   => $request->start,
             'end_time'     => $request->endT,
-            'idCour'       => $request->cours,
+            'idCour'       => $request->Cour,
             'idSalle'      => $request->salle,
             'idUser'       => $request->coach
         ]);
@@ -77,17 +77,17 @@ class PlanningController extends Controller
     }
     //Fonction Pour Supprimer un planing
     public  function deletePlaning($id){
-        $data=_planning::findOrFail($id)->delete(); 
+        $data=Planning::findOrFail($id)->delete();
         return response()->json($data);
     }
     // Fonction qui recupere le planing de la semaine current
     public function getPlaningHebdo()
     {
         $number_of_dayes = 7;
-        $HebdoPlaning = _planning::select('_plannings.id as idPlaning','date_seance','start_time','end_time','_coures.nom as Cnom','_salles.nom as SNom','_users.nom as nomCoach','_users.prenom as prenomCoach')
-        ->join('_coures','_coures.id','_plannings.idCour')
-        ->join('_salles','_salles.id','_plannings.idSalle')
-        ->join('_users','_users.id','_plannings.idUser')
+        $HebdoPlaning = Planning::select('Plannings.id as idPlaning','date_seance','start_time','end_time','Cours.nom as Cnom','Salles.nom as SNom','Users.nom as nomCoach','Users.prenom as prenomCoach')
+        ->join('Cours','Cours.id','Plannings.idCour')
+        ->join('Salles','Salles.id','Plannings.idSalle')
+        ->join('Users','Users.id','Plannings.idUser')
         ->whereRaw($number_of_dayes,'DATEDIFF(day,date_seance,date("y-m-d")) <=')
         ->get();
         return $HebdoPlaning;

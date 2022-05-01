@@ -28,7 +28,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">284</div>
-                        <div class="cardName">Cours</div>
+                        <div class="cardName">Cour</div>
                     </div>
 
                     <div class="iconBx">
@@ -52,13 +52,13 @@
                                 <td>Date seance</td>
                                 <td>Start time</td>
                                 <td>End Time</td>
-                                <td>Cours</td>
+                                <td>Cour</td>
                                 <td>Salle</td>
-                                <td>Coach</td>                                
+                                <td>Coach</td>
                             </tr>
                         </thead>
                         <tbody id="planing-hebdo">
-                            
+
                         </tbody>
                     </table>
                 </div>

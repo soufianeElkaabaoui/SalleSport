@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\_coure;
+use App\Models\Cour;
 use Illuminate\Http\Request;
-use App\Models\_user;
+use App\Models\User;
 
 class CoureController extends Controller
 {
 
     public function getCouresByPlanning(Request $req)
     {
-        $coures = _user::find($req->coachID)->coures($req->givenDate)->get();
+        $coures = User::find($req->coachID)->coures($req->givenDate)->get();
 
         return $coures;
     }
 
-    public function getCours(){
-        $Allcours = _coure::all();
-        return $Allcours;
+    public function getCour(){
+        $AllCour = Cour::all();
+        return $AllCour;
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\_user;
-use App\Models\_salle;
+use App\Models\User;
+use App\Models\Salle;
 use GuzzleHttp\Promise\Create;
 
 class SalleController extends Controller
@@ -12,7 +12,7 @@ class SalleController extends Controller
     //
     public function getSallesByPlanning(Request $req)
     {
-        $salles = _user::find($req->coachID)->salles($req->givenDate)->get();
+        $salles = User::find($req->coachID)->salles($req->givenDate)->get();
 
         return $salles;
     }
@@ -20,18 +20,18 @@ class SalleController extends Controller
         return view('salle');
     }
     public function AllSalle(){
-        // $data = _salle::orderby('id','DESC')->get();
-        $data =_salle::all();
+        // $data = Salle::orderby('id','DESC')->get();
+        $data =Salle::all();
         return response()->json($data);
 
     }
     //Add Salle
-    public function Add_Salle(Request $request){
+    public function AddSalle(Request $request){
         $request->validate([
             'nom'=>'required',
             'capacity'=>'required'
         ]);
-        $data = _salle::insert([
+        $data = Salle::insert([
             'nom'=>$request->nom,
             'capacity'=>$request->capacity
         ]);
@@ -40,7 +40,7 @@ class SalleController extends Controller
     //edit Salle
 
     public function EditSalle($id){
-        $data = _salle::findOrFail($id);
+        $data = Salle::findOrFail($id);
         return response()->json($data);
     }
     // update Salle
@@ -49,7 +49,7 @@ class SalleController extends Controller
             'nom'=>'required',
             'capacity'=>'required'
         ]);
-        $data = _salle::findOrFail($id)->update([
+        $data = Salle::findOrFail($id)->update([
             'nom'=>$request->nom,
             'capacity'=>$request->capacity
         ]);
@@ -58,13 +58,13 @@ class SalleController extends Controller
     }
     //delete Salle
     public  function DeleteSalle($id){
-        $data=_salle::findOrFail($id)->delete(); 
+        $data=Salle::findOrFail($id)->delete();
         return response()->json($data);
     }
 
     public function getAllSalles()
     {
-        $AllSalles = _salle::all();
+        $AllSalles = Salle::all();
         return $AllSalles;
     }
 }

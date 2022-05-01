@@ -39,10 +39,10 @@
                 <!-- ================= New Customers ================ -->
                 <div class="recentCustomers">
                     <div class="cardHeader">
-                        <h2>New Cours</h2>
+                        <h2>New Cour</h2>
                     </div>
 
-                    <form id="frm_AddCours" method="POST">
+                    <form id="frm_AddCour" method="POST">
 						<!--   user name -->
 						<div>
 							<span class="input-item">

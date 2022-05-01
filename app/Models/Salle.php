@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class _planning extends Model
+class Salle extends Model
 {
     use HasFactory;
-    protected $fillable = ['date_seance','start_time','end_time','idCour','idSalle','idUser'];
+    protected $fillable =['nom','capacity'];
 }
