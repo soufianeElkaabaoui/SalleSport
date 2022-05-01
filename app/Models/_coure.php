@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class _coure extends Model
 {
     use HasFactory;
+    protected $fillable = ['nom','photopath'];
 }
