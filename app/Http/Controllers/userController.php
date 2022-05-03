@@ -8,30 +8,65 @@ use Illuminate\Http\Request;
 
 class userController extends Controller
 {
-    // afficher les utilisateurs disponibles:
-    public function index()
-    {
-        // $usersRows = DB::table('_users')->get(); // pour obtenir tous les lignes de la table _users.
-        // return view('users', ['users' => $usersRows]); // pour appeler la page resources/views/users.blade.php et passer le paramétre necessite.
-        //------------------
-        $usersRows = _user::all();
-        return view('coach', ['users' => $usersRows]);
-    }
-
-    public function coach_index()
+    public function coach_count()
     {
         //------------------
         $usersRows = _user::all();
         $userCount = count($usersRows);
-        return view('dashboard', ['users' => $usersRows,'countUsers' => $userCount]);
+        return $userCount;
     }
-    public function coaches()
-    {
-        //------------------
-        $coaches = _user::all();
+    public function Create_coach(){
+        return view('coach');
+    }
+    public function AllCoach(){
+        // $data = _salle::orderby('id','DESC')->get();
+        $data =_user::all();
+        return response()->json($data);
 
-        return $coaches;
     }
+    //Add Coach
+    public function Add_Coach(Request $request){
+        $request->validate([
+            'nom'=>'required',
+            'prenom'=>'required',
+            'email'=>'required',
+        ]);
+        $data = _user::insert([
+            'nom'=>$request->nom,
+            'prenom'=>$request->prenom,
+            'email'=>$request->email
+        ]);
+        return response()->json($data);
+    }
+    //edit Coach
+
+    public function EditCoach($id){
+        $data = _user::findOrFail($id);
+        return response()->json($data);
+    }
+    // update Coach
+    public function UpdateCoach(Request $request ,$id){
+        $request->validate([
+            'nom'=>'required',
+            'prenom'=>'required',
+            'email'=>'required',
+        ]);
+        $data =_user::findOrFail($id)->update([
+            'nom'=>$request->nom,
+            'prenom'=>$request->prenom,
+            'email'=>$request->email
+        ]);
+        return response()->json($data);
+       
+    }
+    //delete Coach
+    public  function Delet_Coach($id){
+        $data=_user::findOrFail($id)->delete(); 
+        return response()->json($data);
+    }
+
+
+    //end Function Coach
     // pour l'authentification d'un utilisateur:
     public function login(Request $loggedUser)
     {
@@ -131,9 +166,4 @@ class userController extends Controller
         // return redirect()->route('cours_view.index');
         return $nameFile;
     }
-
-    public function logoutUser(Request $request) {
-        $request->session()->forget('nom');
-        return redirect('/');
-     }
 }

@@ -9,6 +9,7 @@ class _user extends Model
 {
     use HasFactory;
 
+    protected $fillable =['nom','prenom','email','type','image'];
     public function salles($selectedDate)
     {
         return $this->belongsToMany(_salle::class, '_plannings', 'idUser', 'idSalle')->as('plannings')->withPivot('date_seance', 'start_time', 'end_time')->wherePivot('date_seance', $selectedDate);

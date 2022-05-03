@@ -63,39 +63,6 @@
                         </div>
                 </div>
             </form>
-            {{-- <form id="Image-edit" enctype="multipart/form-data" method="POST" >
-                    
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2 id="Head">New Cours</h2>
-                    </div>
-						<!--  Cour name -->
-						<div>
-							<span class="input-item">
-							   <i class="fa fa-user-circle"></i>
-							 </span>
-							<!--  Cour name Input-->
-
-                            <input type="hidden" id="idCoursf1">
-							 <input name="nom" class="form-input" id="Nom_Courf1" type="text" placeholder="Nom Cours" required>
-                             <span style="color:red; margin:10px" id="Nom_error_Cour"></span>
-						</div>
-						
-						<!--   photo_path name -->
-						<div>
-							<span class="input-item">
-							   <i class="fa fa-user-circle"></i>
-							 </span>
-							<!--    photo_path Input-->
-							 <input name="path" class="form-input" id="Photo_pathf1" type="file" placeholder="Choisie une image" required>
-                             <span style="color:red; margin:10px" id="PhotoPath_error_Cour"></span>
-						</div>
-						
-                        <div>
-                            <button type="submit" class="log-in upload-image" id="btn_save_Cour"> update </button>
-                        </div>
-                </div>
-            </form> --}}
             </div>
 @endsection
 @section('scripts')

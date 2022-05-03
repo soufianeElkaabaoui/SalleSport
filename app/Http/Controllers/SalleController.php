@@ -16,6 +16,14 @@ class SalleController extends Controller
 
         return $salles;
     }
+     //Passe Count Salles to View Dashboard
+     public function Salle_Count()
+     {
+         //------------------
+         $SalleRows = _salle::all();
+         $SalleCount = count($SalleRows);
+         return $SalleCount;
+     }
     public function Create(){
         return view('salle');
     }

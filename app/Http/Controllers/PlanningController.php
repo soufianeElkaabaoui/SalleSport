@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\_user;
+use APP\Models\_coure;
 use App\Models\_planning;
+use Illuminate\Http\Request;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\CoureController;
+use App\Http\Controllers\SalleController;
 
 class PlanningController extends Controller
 {

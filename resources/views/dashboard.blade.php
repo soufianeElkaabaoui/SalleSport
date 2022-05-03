@@ -70,16 +70,6 @@
                     </div>
 
                     <table>
-                        @foreach ($users as $user)
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{{ asset('imgs/customer02.jpg') }}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>{{$user->nom}} <br> <span>{{$user->prenom}}</span></h4>
-                            </td>
-                        </tr>
-                        @endforeach
                     </table>
                 </div>
             </div>
