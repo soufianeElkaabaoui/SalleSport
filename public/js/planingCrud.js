@@ -263,6 +263,8 @@ $(document).ready(function($){
         selectStartTime.innerHTML += "<option value="+key+">"+key+"</option>";
         selectEndTime.innerHTML += "<option value="+key+">"+key+"</option>";
     }
+    AllCoursPlaning();
+    AllCoachesPlaning();
 });
 
 //---------------------Start Show Planing du semaine ---------------------
@@ -291,3 +293,38 @@ function getPlaningHebdo() {
 }
 getPlaningHebdo()
 //---------------------END Show Planing du semaine -----------------------
+//---------------------Start Display Cours In Select ---------------------
+function AllCoursPlaning() {
+    $.ajax({
+        type: "GET",
+        url: "/cours/All_Cours",
+        dataType: "json",
+        success: function (response) {
+            var data = "";
+            $.each(response, function (key, value) {
+                data += "<option value='"+value.id+"'>"+value.nom+"</option>"
+            });
+            $("#id-cours").append(data);
+        },
+    });
+}
+//---------------------END Display Cours In Select ---------------------
+function AllCoachesPlaning() {
+    $.ajax({
+        type: "GET",
+        url: "/coach/all_Coaches",
+        dataType: "json",
+        success: function (response) {
+            var data = "";
+            $.each(response, function (key, value) {
+                data +=
+                    "<option value='" +
+                    value.id +
+                    "'>" +
+                    value.nom +
+                    "</option>";
+            });
+            $("#idCoach").append(data);
+        },
+    });
+}

@@ -79,9 +79,6 @@
 							<!--   Cours Select-->
                              <select name="" id="id-cours" class="form-select">
                                  <option value="">All Cours</option>
-                                 @foreach($AllCours as $cours)
-                                 <option value="{{$cours->id}}">{{$cours->nom}}</option>
-                                 @endforeach
                              </select>
                              <span style="color:red; margin:10px" id="id-cours_error"></span>
 						</div>
@@ -95,7 +92,7 @@
                              <select name="" id="idSalle" class="form-select">
                                  <option value="">All Salle</option>
                                  @foreach($AllSalles as $salle)
-                                 <option value="{{$salle->id}}">{{$salle->nom}}</option>    
+                                    <option value="{{$salle->id}}">{{$salle->nom}}</option>
                                  @endforeach
                              </select>
                              <span style="color:red; margin:10px" id="idSalle_error"></span>
@@ -109,9 +106,6 @@
 							<!--   Coach Select-->
                              <select name="" id="idCoach" class="form-select">
                                  <option value="">All Coach</option>
-                                 @foreach($AllCoaches as $coach)
-                                 <option value="{{$coach->id}}">{{$coach->nom}}</option>
-                                 @endforeach
                              </select>
                              <span style="color:red; margin:10px" id="idCoach_error"></span>
 						</div>

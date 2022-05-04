@@ -19,8 +19,8 @@ class PlanningController extends Controller
     }
 
     public function index_planingCurd() {
-        $courses = (new CoureController())->getCours();
-        $coaches = (new userController())->coaches();
+        $courses = (new CoureController())->AllCours();
+        $coaches = (new userController())->AllCoach();
         $salles = (new SalleController())->getAllSalles();
         return view('planing',['AllCours' => $courses,'AllCoaches' => $coaches,'AllSalles' => $salles]);
     }

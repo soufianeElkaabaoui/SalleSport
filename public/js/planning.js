@@ -151,7 +151,7 @@ function getCoaches() {
     let givenCoaches;
     $.ajax({
         type:"GET",
-        url: "/coaches",
+        url: "/coach/all_Coaches",
         async: false,
         dataType: 'json',
         success: function(coaches){

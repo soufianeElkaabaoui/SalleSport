@@ -27,7 +27,6 @@ class CoureController extends Controller
     //Cour
     public function Create_Cours()
     {
-
         return view('cours');
     }
     public function AllCours()
@@ -35,7 +34,6 @@ class CoureController extends Controller
         // $data = _salle::orderby('id','DESC')->get();
         $data = _coure::all();
         return response()->json($data);
-
     }
     //AddCour
     public function Add_Cour(Request $request)
