@@ -92,61 +92,6 @@ class userController extends Controller
             echo $th;
         }
     }
-    // ajouter nouveau utilisateur:
-    public function adduser(Request $postedUser)
-    {
-        $userData = $postedUser->input();
-        try
-	    {
-            $user = new _user;
-            $user->nom = $userData['LName'];
-            $user->prenom = $userData['FName'];
-            $user->email = $userData['Email'];
-            $user->password = $userData['Password'];
-            $user->save();
-            //---------
-            $postedUser->session()->flash('adding','L\'utilisateur été ajouté avec succés.');
-            return redirect('/users');
-        } catch (\Throwable $th) {
-            echo $th;
-        }
-        return $user;
-    }
-    // afficher la page de modification:
-    public function edituserGet($userid)
-    {
-        $updatedUser = _user::find($userid);
-        return view('edituser', ['user' => $updatedUser]);
-    }
-    // modifier un utilisateur:
-    public function edituserPost(Request $modifiedUserData)
-    {
-        $modifiedUser = _user::find($modifiedUserData->id); // pour trouver un utilisateur avec son id(///PRIMARY KEY).
-        $modifiedUser->nom = $modifiedUserData->LName;
-        $modifiedUser->prenom = $modifiedUserData->FName;
-        $modifiedUser->email = $modifiedUserData->Email;
-        $modifiedUser->password = $modifiedUserData->Password;
-        $result = $modifiedUser->save(); // dans ce cas, cette fonction va nous permettre de faire la modification.
-        if ($result) {
-            // session variable ...
-            return redirect('/users');
-        } else {
-            return ['result' => "Date hasn't been updated"];
-        }
-    }
-    // supprimer un utilisateur:
-    public function deleteuser($userid)
-    {
-        $deletedUser = _user::find($userid);
-        $result = $deletedUser->delete();
-        if ($result) {
-	        // session variable ...
-            return redirect('/users');
-        } else {
-            return ['result' => "Date hasn't been updated"];
-        }
-    }
-
 
     public function logoutUser(Request $request) {
         $request->session()->forget('nom');
