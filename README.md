@@ -49,6 +49,9 @@ Clean up configuration and cache files
 Create all tables in your localhost
 <pre><code>php artisan migrate</code></pre>
 
+Link the storage file to the public file
+<pre><code>php artisan migrate</code></pre>
+
 ### Premium Partners
 
 - **[Vehikl](https://vehikl.com/)**
