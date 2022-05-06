@@ -31,7 +31,6 @@ class CoureController extends Controller
     }
     public function AllCours()
     {
-        // $data = _salle::orderby('id','DESC')->get();
         $data = Cour::all();
         return response()->json($data);
     }

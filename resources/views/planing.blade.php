@@ -92,11 +92,7 @@
                              <select name="" id="idSalle" class="form-select">
                                  <option value="">All Salle</option>
                                  @foreach($AllSalles as $salle)
-<<<<<<< HEAD
-                                 <option value="{{$salle->id}}">{{$salle->nom}}</option>
-=======
                                     <option value="{{$salle->id}}">{{$salle->nom}}</option>
->>>>>>> d3d374dcd36171bd77e9997f8fffa925bd729352
                                  @endforeach
                              </select>
                              <span style="color:red; margin:10px" id="idSalle_error"></span>

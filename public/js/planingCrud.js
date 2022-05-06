@@ -46,7 +46,7 @@ function ClearInput() {
     $("#date-planing").val('');
     $("#start-time").val('');
     $("#end-time").val('');
-    $("#id-Cour").val('');
+    $("#id-cours").val('');
     $("#idSalle").val('');
     $("#idCoach").val('');
 }
@@ -85,10 +85,11 @@ getAllPlaning()
 //---------------------Start Add Planing-----------------------
 
 function AddPlaning() {
+    debugger
     var datePlaning = $("#date-planing").val();
     var startTime = $("#start-time").val();
     var endTime = $("#end-time").val();
-    var idCour = $("#id-Cour").val();
+    var idCour = $("#id-cours").val();
     var idSalle = $("#idSalle").val();
     var idCoach = $("#idCoach").val();
     $.ajax({
@@ -142,7 +143,7 @@ function EditPlanings(id) {
             $("#date-planing").val(response.date_seance);
             $("#start-time").val(response.start_time);
             $("#end-time").val(response.end_time);
-            $("#id-Cour").val(response.idCour);
+            $("#id-cours").val(response.idCour);
             $("#idSalle").val(response.idSalle);
             $("#idCoach").val(response.idUser);
             $("#btn_save").hide();
@@ -158,7 +159,7 @@ function UpdatePlaning() {
     var datePlaning = $("#date-planing").val();
     var startTime = $("#start-time").val();
     var endTime = $("#end-time").val();
-    var idCour = $("#id-Cour").val();
+    var idCour = $("#id-cours").val();
     var idSalle = $("#idSalle").val();
     var idCoach = $("#idCoach").val();
   $.ajax({

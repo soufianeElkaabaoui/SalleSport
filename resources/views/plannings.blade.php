@@ -10,9 +10,9 @@
 </head>
 <body>
     <div class="head-planing">
-    <h1>Planing hebdomadaire</h1>
-    <div id="coach_name"></div>
-</div>
+        <h1>Planing hebdomadaire</h1>
+        <div id="coach_name"></div>
+    </div>
     <div class="corp-planing">
         <div id="container" class="container-planing">
             <div></div>
