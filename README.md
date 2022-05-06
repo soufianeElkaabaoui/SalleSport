@@ -50,7 +50,7 @@ Create all tables in your localhost
 <pre><code>php artisan migrate</code></pre>
 
 Link the storage file to the public file
-<pre><code>php artisan migrate</code></pre>
+<pre><code>php artisan storage:link</code></pre>
 
 ### Premium Partners
 
