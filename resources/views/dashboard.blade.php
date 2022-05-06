@@ -52,13 +52,13 @@
                                 <td>Date seance</td>
                                 <td>Start time</td>
                                 <td>End Time</td>
-                                <td>Cours</td>
+                                <td>Cour</td>
                                 <td>Salle</td>
-                                <td>Coach</td>                                
+                                <td>Coach</td>
                             </tr>
                         </thead>
                         <tbody id="planing-hebdo">
-                            
+
                         </tbody>
                     </table>
                 </div>

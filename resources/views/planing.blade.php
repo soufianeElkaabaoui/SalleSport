@@ -15,7 +15,7 @@
                                 <td>Date seance</td>
                                 <td>Start time</td>
                                 <td>End Time</td>
-                                <td>Cours</td>
+                                <td>Cour</td>
                                 <td>Salle</td>
                                 <td>Coach</td>
                                 <td>Actions</td>
@@ -23,7 +23,7 @@
                         </thead>
 
                         <tbody id="all-planings">
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -33,9 +33,9 @@
                         <h2>New Planing</h2>
                     </div>
 
-                    <!-- <form id="frm_AddCours" method=""> -->
+                    <!-- <form id="frm_AddCour" method=""> -->
 						<!--   Date Planing -->
-                        
+
 						<div>
 							<span class="input-item">
 							   <i class="fa fa-user-circle"></i>
@@ -46,7 +46,7 @@
 							 <input class="form-input" id="date-planing" type="date" required>
                              <span style="color:red; margin:10px" id="date-planing_error"></span>
 						</div>
-						
+
 						<!--   Start Time -->
 						<div>
 							<span class="input-item">
@@ -58,7 +58,7 @@
                             </select>
                             <span style="color:red; margin:10px" id="start-time_error"></span>
 						</div>
-						
+
 						<!--   End Time -->
 						<div>
 							<span class="input-item">
@@ -70,8 +70,8 @@
                             </select>
                             <span style="color:red; margin:10px" id="end-time_error"></span>
 						</div>
-						
-						<!--   Cours Id -->
+
+						<!--   Cour Id -->
 						<div>
 							<span class="input-item">
 							   <i class="fa fa-user-circle"></i>
@@ -80,7 +80,7 @@
                              <select name="" id="id-cours" class="form-select">
                                  <option value="">All Cours</option>
                              </select>
-                             <span style="color:red; margin:10px" id="id-cours_error"></span>
+                             <span style="color:red; margin:10px" id="id-Cour_error"></span>
 						</div>
 
                         <!--   Salle Id -->
@@ -92,7 +92,11 @@
                              <select name="" id="idSalle" class="form-select">
                                  <option value="">All Salle</option>
                                  @foreach($AllSalles as $salle)
+<<<<<<< HEAD
+                                 <option value="{{$salle->id}}">{{$salle->nom}}</option>
+=======
                                     <option value="{{$salle->id}}">{{$salle->nom}}</option>
+>>>>>>> d3d374dcd36171bd77e9997f8fffa925bd729352
                                  @endforeach
                              </select>
                              <span style="color:red; margin:10px" id="idSalle_error"></span>

@@ -13,7 +13,7 @@ class CreateSallesTable extends Migration
      */
     public function up()
     {
-        Schema::create('_salles', function (Blueprint $table) {
+        Schema::create('salles', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
             $table->integer('capacity');
@@ -28,6 +28,6 @@ class CreateSallesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_salles');
+        Schema::dropIfExists('salles');
     }
 }

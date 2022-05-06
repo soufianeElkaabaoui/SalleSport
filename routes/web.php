@@ -43,8 +43,8 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/coach',[userController::class, 'index']);
 
-Route::get('/cours',function() {
-    return view('cours');
+Route::get('/Cour',function() {
+    return view('Cours');
 });
 
 //Start Planing Router
@@ -80,8 +80,8 @@ Route::get('/coaches', [userController::class, 'coaches']);
 //Start Routes Salle
 Route::get('/salle',[SalleController::class,'Create']);
 Route::get('/salle/all', [SalleController::class,'AllSalle']);
-Route::post('/salle/Add_Salle/',[SalleController::class,'Add_Salle']);
+Route::post('/salle/AddSalle/',[SalleController::class,'AddSalle']);
 Route::get('/salle/editSalle/{id}', [SalleController::class,'EditSalle']);
-Route::post('/salle/Update_Salle/{id}',[SalleController::class,'UpdateSalle']);
+Route::post('/salle/UpdateSalle/{id}',[SalleController::class,'UpdateSalle']);
 Route::get('/salle/DeleteSalle/{id}',[SalleController::class,'DeleteSalle']);
 //End Routes Salle

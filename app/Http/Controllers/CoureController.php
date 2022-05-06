@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\_user;
-use App\Models\_coure;
+use App\Models\Cour;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,7 +12,7 @@ class CoureController extends Controller
 
     public function getCouresByPlanning(Request $req)
     {
-        $coures = _user::find($req->coachID)->coures($req->givenDate)->get();
+        $coures = User::find($req->coachID)->coures($req->givenDate)->get();
 
         return $coures;
     }
@@ -20,7 +20,7 @@ class CoureController extends Controller
     public function cour_count()
     {
         //------------------
-        $courRows = _coure::all();
+        $courRows = Cour::all();
         $courCount = count($courRows);
         return $courCount;
     }
@@ -32,7 +32,7 @@ class CoureController extends Controller
     public function AllCours()
     {
         // $data = _salle::orderby('id','DESC')->get();
-        $data = _coure::all();
+        $data = Cour::all();
         return response()->json($data);
     }
     //AddCour
@@ -50,8 +50,9 @@ class CoureController extends Controller
             $file_name = time() . '_' . $file->getClientOriginalName();
             $upload = $file->storeAs($path, $file_name);
         }
+        // return response()->json([$validator, $file_name, $upload]);
         if ($upload) {
-            $data = _coure::insert([
+            $data = Cour::insert([
                 'nom' => $request->nom,
                 'photopath' => $file_name,
             ]);
@@ -64,13 +65,13 @@ class CoureController extends Controller
 
     public function EditCour($id)
     {
-        $data = _coure::findOrFail($id);
+        $data = Cour::findOrFail($id);
         return response()->json($data);
     }
     // updateCour
     public function UpdateCour(Request $request)
     {
-        $course = _coure::findOrFail($request->id);
+        $course = Cour::findOrFail($request->id);
         $rules = [];
         $rules['nom'] = 'required';
         if ($request->path) {
@@ -103,7 +104,7 @@ class CoureController extends Controller
     //deleteCour
     public function DeleteCour($id)
     {
-        $data = _coure::findOrFail($id)->delete();
+        $data = Cour::findOrFail($id)->delete();
         return response()->json($data);
     }
 }

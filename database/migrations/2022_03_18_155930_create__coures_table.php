@@ -13,7 +13,7 @@ class CreateCouresTable extends Migration
      */
     public function up()
     {
-        Schema::create('_coures', function (Blueprint $table) {
+        Schema::create('Cours', function (Blueprint $table) {
             $table->id(); // pour ajouter une colonne id de type bigint(20) unsigned primary key auto increment.
             $table->string('nom');
             $table->string('photopath')->nullable(); // pour ajouter une colonne de type varchar(255) qui accept des valeurs nulles.
@@ -28,6 +28,6 @@ class CreateCouresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_coures');
+        Schema::dropIfExists('Cours');
     }
 }

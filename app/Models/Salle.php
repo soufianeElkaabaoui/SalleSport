@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class _coure extends Model
+class Salle extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom','photopath'];
+    protected $fillable =['nom','capacity'];
 }

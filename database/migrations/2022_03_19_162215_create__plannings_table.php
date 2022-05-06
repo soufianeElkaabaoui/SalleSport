@@ -13,7 +13,7 @@ class CreatePlanningsTable extends Migration
      */
     public function up()
     {
-        Schema::create('_plannings', function (Blueprint $table) {
+        Schema::create('plannings', function (Blueprint $table) {
             $table->id();
             $table->date('date_seance');
             $table->time('start_time');
@@ -21,9 +21,9 @@ class CreatePlanningsTable extends Migration
             $table->unsignedBigInteger('idCour');
             $table->unsignedBigInteger('idSalle');
             $table->unsignedBigInteger('idUser');
-            $table->foreign('idCour')->references('id')->on('_Coures');
-            $table->foreign('idSalle')->references('id')->on('_Salles');
-            $table->foreign('idUser')->references('id')->on('_Users');
+            $table->foreign('idCour')->references('id')->on('Cours');
+            $table->foreign('idSalle')->references('id')->on('Salles');
+            $table->foreign('idUser')->references('id')->on('Users');
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ class CreatePlanningsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_plannings');
+        Schema::dropIfExists('plannings');
     }
 }

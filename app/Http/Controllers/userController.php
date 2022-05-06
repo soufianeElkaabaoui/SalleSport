@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB; // pour interagir avec la base de données.
-use App\Models\_user;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +11,7 @@ class userController extends Controller
     public function coach_count()
     {
         //------------------
-        $usersRows = _user::all();
+        $usersRows = User::all();
         $userCount = count($usersRows);
         return $userCount;
     }
@@ -20,7 +20,7 @@ class userController extends Controller
     }
     public function AllCoach(){
         // $data = _salle::orderby('id','DESC')->get();
-        $data =_user::all();
+        $data =User::all();
         return response()->json($data);
 
     }
@@ -31,7 +31,7 @@ class userController extends Controller
             'prenom'=>'required',
             'email'=>'required',
         ]);
-        $data = _user::insert([
+        $data = User::insert([
             'nom'=>$request->nom,
             'prenom'=>$request->prenom,
             'email'=>$request->email
@@ -41,27 +41,28 @@ class userController extends Controller
     //edit Coach
 
     public function EditCoach($id){
-        $data = _user::findOrFail($id);
+        $data = User::findOrFail($id);
         return response()->json($data);
     }
     // update Coach
-    public function UpdateCoach(Request $request ,$id){
+    public function UpdateCoach(Request $request, $id){
         $request->validate([
             'nom'=>'required',
             'prenom'=>'required',
             'email'=>'required',
         ]);
-        $data =_user::findOrFail($id)->update([
+
+        $data =User::findOrFail($id)->update([
             'nom'=>$request->nom,
             'prenom'=>$request->prenom,
             'email'=>$request->email
         ]);
         return response()->json($data);
-       
+
     }
     //delete Coach
     public  function Delet_Coach($id){
-        $data=_user::findOrFail($id)->delete(); 
+        $data=User::findOrFail($id)->delete();
         return response()->json($data);
     }
 
@@ -72,9 +73,9 @@ class userController extends Controller
     {
         try
         {
-            $user = _user::where('email', $loggedUser->email)
+            $user = User::where('email', $loggedUser->email)
                             ->where('password', $loggedUser->password)
-                            ->get(); // select * from _users where email = '' and password = ''
+                            ->get(); // select * from Users where email = '' and password = ''
             if (count($user) > 0)
             {
                 $loggedUser->session()->put('email', $user[0]['email']);

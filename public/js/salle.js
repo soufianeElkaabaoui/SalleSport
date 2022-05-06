@@ -6,16 +6,16 @@ $.ajaxSetup({
     }
 })
 
-//---------------------Start Clear data----------------------- 
+//---------------------Start Clear data-----------------------
 function ClearData() {
     $("#nom-input").val('');
    $("#capacity-input").val('');
    $("#nom_error").text('');
     $("#capacity_error").text('');
   }
-  //---------------------ENd clear  data----------------------- 
-  //---------------------Start afficher Salle----------------------- 
-  
+  //---------------------ENd clear  data-----------------------
+  //---------------------Start afficher Salle-----------------------
+
 function AllSalle() {
 $.ajax({
    type: "GET",
@@ -23,7 +23,7 @@ $.ajax({
    dataType: "json",
    success: function (response) {
        var data=""
-       $.each(response, function (key, value) { 
+       $.each(response, function (key, value) {
            data=data+"<tr>"
            data=data+"<td>"+value.id+"</td>"
            data=data+"<td>"+value.nom+"</td>"
@@ -39,15 +39,15 @@ $.ajax({
 });
  }
 AllSalle();
-//---------------------end afficher Salle----------------------- 
+//---------------------end afficher Salle-----------------------
 
-//---------------------Start Add Salle----------------------- 
+//---------------------Start Add Salle-----------------------
  function AddSalle() {
     var nom =$("#nom-input").val();
     var capacity =$("#capacity-input").val();
     $.ajax({
         type: "POST",
-        url: "/salle/Add_Salle/",
+        url: "/salle/AddSalle/",
         data: {
             nom:nom,
             capacity:capacity
@@ -98,7 +98,7 @@ AllSalle();
     var capacity =$("#capacity-input").val();
     $.ajax({
         type: "POST",
-        url: "/salle/Update_Salle/"+id,
+        url: "/salle/UpdateSalle/"+id,
         data: {
             nom:nom,
             capacity:capacity
@@ -154,7 +154,7 @@ function DeleteSalle(id) {
                     success: function (response) {
                         $("#btn_save").show();
                         $("#btn_update").hide();
-                    
+
                         ClearData();
                         AllSalle();
                     }
@@ -175,6 +175,6 @@ function DeleteSalle(id) {
                     )
                 }
                 })
-     
+
     }
   //---------------------end Delete Salle----------------------- EditSalle

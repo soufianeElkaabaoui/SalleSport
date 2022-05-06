@@ -5,7 +5,7 @@
  <div class="details curd-page">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Cours</h2>
+                        <h2>Cour</h2>
                     </div>
 
                     <table>
@@ -19,14 +19,14 @@
                         </thead>
 
                         <tbody>
-                           
+
                         </tbody>
                     </table>
                 </div>
 
                 <!-- ================= New Customers ================ -->
                 <form id="image-upload" enctype="multipart/form-data" method="POST">
-                    
+
                 <div class="recentCustomers">
                     <div class="cardHeader">
                         <h2 id="Head">New Cours</h2>
@@ -42,7 +42,7 @@
 							 <input name="nom" class="form-input" id="Nom_Cour" type="text" placeholder="Nom Cours" required>
                              <span style="color:red; margin:10px" id="Nom_error_Cour"></span>
 						</div>
-						
+
 						<!--   photo_path name -->
 						<div>
 							<span class="input-item">
@@ -56,7 +56,7 @@
                         <div>
 							 <img id="selected_photo" style='margin-top: 15px;width: 80px;height: 80px;border-radius: 50%;' src="{{asset('storage/files/no_image.png')}}" alt="image cours">
 						</div>
-						
+
                         <div>
                             <button type="submit" class="log-in upload-image" id="btn_save_Cour"> Ajouter </button>
                             <button type="submit" class="log-in upload-image" id="btn_update_Cour"> update </button>

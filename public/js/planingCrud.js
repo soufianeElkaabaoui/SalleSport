@@ -1,4 +1,4 @@
-//Remplissage 
+//Remplissage
 let mapp_Time_GridLine =
 {
     "08:00:00":2,
@@ -46,7 +46,7 @@ function ClearInput() {
     $("#date-planing").val('');
     $("#start-time").val('');
     $("#end-time").val('');
-    $("#id-cours").val('');
+    $("#id-Cour").val('');
     $("#idSalle").val('');
     $("#idCoach").val('');
 }
@@ -60,7 +60,7 @@ function getAllPlaning() {
         success: function (response) {
             var num = 1;
             var data=""
-            $.each(response, function (key,value) { 
+            $.each(response, function (key,value) {
                 data=data+"<tr>"
                 data=data+"<td>"+num+"</td>"
                 data=data+"<td>"+value.date_seance+"</td>"
@@ -88,7 +88,7 @@ function AddPlaning() {
     var datePlaning = $("#date-planing").val();
     var startTime = $("#start-time").val();
     var endTime = $("#end-time").val();
-    var idCours = $("#id-cours").val();
+    var idCour = $("#id-Cour").val();
     var idSalle = $("#idSalle").val();
     var idCoach = $("#idCoach").val();
     $.ajax({
@@ -98,7 +98,7 @@ function AddPlaning() {
             date:datePlaning,
             start:startTime,
             endT:endTime,
-            cours:idCours,
+            Cour:idCour,
             salle:idSalle,
             coach:idCoach
         },
@@ -122,7 +122,7 @@ function AddPlaning() {
                //$("#date-planing_error").text(error.responseJSON.errors.datePlaning);
                 // $("#start-time_error").text(error.responseJSON.errors.startTime);
                 // $("#end-time_error").text(error.responseJSON.errors.endTime);
-                // $("#id-cours_error").text(error.responseJSON.errors.idCours);
+                // $("#id-Cour_error").text(error.responseJSON.errors.idCour);
                 // $("#idSalle_error").text(error.responseJSON.errors.idSalle);
                 // $("#idCoach_error").text(error.responseJSON.errors.idCoach);
             }
@@ -142,7 +142,7 @@ function EditPlanings(id) {
             $("#date-planing").val(response.date_seance);
             $("#start-time").val(response.start_time);
             $("#end-time").val(response.end_time);
-            $("#id-cours").val(response.idCour);
+            $("#id-Cour").val(response.idCour);
             $("#idSalle").val(response.idSalle);
             $("#idCoach").val(response.idUser);
             $("#btn_save").hide();
@@ -158,7 +158,7 @@ function UpdatePlaning() {
     var datePlaning = $("#date-planing").val();
     var startTime = $("#start-time").val();
     var endTime = $("#end-time").val();
-    var idCours = $("#id-cours").val();
+    var idCour = $("#id-Cour").val();
     var idSalle = $("#idSalle").val();
     var idCoach = $("#idCoach").val();
   $.ajax({
@@ -168,7 +168,7 @@ function UpdatePlaning() {
         date:datePlaning,
         start:startTime,
         endT:endTime,
-        cours:idCours,
+        Cour:idCour,
         salle:idSalle,
         coach:idCoach
       },
@@ -194,14 +194,14 @@ function UpdatePlaning() {
         //$("#date-planing_error").text(error.responseJSON.errors.datePlaning);
         // $("#start-time_error").text(error.responseJSON.errors.startTime);
         // $("#end-time_error").text(error.responseJSON.errors.endTime);
-        // $("#id-cours_error").text(error.responseJSON.errors.idCours);
+        // $("#id-Cour_error").text(error.responseJSON.errors.idCour);
         // $("#idSalle_error").text(error.responseJSON.errors.idSalle);
         // $("#idCoach_error").text(error.responseJSON.errors.idCoach);
       }
   })
 }
 //---------------------End Edit Planing Selectionner---------------------
-//---------------------Start Delete Planing----------------------- 
+//---------------------Start Delete Planing-----------------------
 function DeletePlaning(id) {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -251,7 +251,7 @@ function DeletePlaning(id) {
             }
         });
 }
-  //---------------------End Delete Planing----------------------- 
+  //---------------------End Delete Planing-----------------------
 
 // Remplissage du select box par les horaire
 const selectStartTime = document.getElementById('start-time');
@@ -275,7 +275,7 @@ function getPlaningHebdo() {
         success: function (response) {
             var num = 1;
             var data=""
-            $.each(response, function (key,value) { 
+            $.each(response, function (key,value) {
                 data=data+"<tr>"
                 data=data+"<td>"+num+"</td>"
                 data=data+"<td>"+value.date_seance+"</td>"
