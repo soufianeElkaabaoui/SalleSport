@@ -7,18 +7,16 @@
     <title>Planing</title>
     <link rel="stylesheet" href="{{asset('css/style-plannings.css')}}">
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-    <script src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>
-    <script src="{{asset('js/planning.js')}}"></script>
 </head>
 <body>
     <div class="head-planing">
     <h1>Planing hebdomadaire</h1>
     <div id="coach_name"></div>
-    </div>
+</div>
     <div class="corp-planing">
-    <div id="container" class="container-planing">
-        <div></div>
-        <div class="item">8:00</div>
+        <div id="container" class="container-planing">
+            <div></div>
+            <div class="item">8:00</div>
         <div class="item">8:30</div>
         <div class="item">9:00</div>
         <div class="item">9:30</div>
@@ -59,6 +57,8 @@
         <div class="sunday day-week">sunday</div>
         {{-- <div id="item1">test</div> --}}
     </div>
-    </div>
+</div>
+<script src="{{asset('jquery/jquery-3.6.0.min.js')}}"></script>
+<script src="{{asset('js/planning.js')}}"></script>
 </body>
 </html>

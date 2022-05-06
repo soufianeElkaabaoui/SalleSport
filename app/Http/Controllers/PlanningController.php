@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Planning;
+use APP\Models\Cour;
+use Illuminate\Http\Request;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\CoureController;
+use App\Http\Controllers\SalleController;
 
 class PlanningController extends Controller
 {
@@ -15,10 +19,10 @@ class PlanningController extends Controller
     }
 
     public function index_planingCurd() {
-        $Coures = (new CoureController())->getCour();
-        $coaches = (new userController())->coaches();
+        $courses = (new CoureController())->AllCours();
+        $coaches = (new userController())->AllCoach();
         $salles = (new SalleController())->getAllSalles();
-        return view('planing',['AllCour' => $Coures,'AllCoaches' => $coaches,'AllSalles' => $salles]);
+        return view('planing',['AllCour' => $courses,'AllCoaches' => $coaches,'AllSalles' => $salles]);
     }
     public function getAllPlaning() {
         $AllPlaning = Planning::select('Plannings.id as idPlaning','date_seance','start_time','end_time','Cours.nom as Cnom','Salles.nom as SNom','Users.nom as nomCoach')

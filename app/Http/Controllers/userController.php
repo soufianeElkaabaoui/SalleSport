@@ -8,30 +8,65 @@ use Illuminate\Http\Request;
 
 class userController extends Controller
 {
-    // afficher les utilisateurs disponibles:
-    public function index()
-    {
-        // $usersRows = DB::table('Users')->get(); // pour obtenir tous les lignes de la table Users.
-        // return view('users', ['users' => $usersRows]); // pour appeler la page resources/views/users.blade.php et passer le paramétre necessite.
-        //------------------
-        $usersRows = User::all();
-        return view('coach', ['users' => $usersRows]);
-    }
-
-    public function coach_index()
+    public function coach_count()
     {
         //------------------
         $usersRows = User::all();
         $userCount = count($usersRows);
-        return view('dashboard', ['users' => $usersRows,'countUsers' => $userCount]);
+        return $userCount;
     }
-    public function coaches()
-    {
-        //------------------
-        $coaches = User::all();
+    public function Create_coach(){
+        return view('coach');
+    }
+    public function AllCoach(){
+        // $data = _salle::orderby('id','DESC')->get();
+        $data =User::all();
+        return response()->json($data);
 
-        return $coaches;
     }
+    //Add Coach
+    public function Add_Coach(Request $request){
+        $request->validate([
+            'nom'=>'required',
+            'prenom'=>'required',
+            'email'=>'required',
+        ]);
+        $data = User::insert([
+            'nom'=>$request->nom,
+            'prenom'=>$request->prenom,
+            'email'=>$request->email
+        ]);
+        return response()->json($data);
+    }
+    //edit Coach
+
+    public function EditCoach($id){
+        $data = User::findOrFail($id);
+        return response()->json($data);
+    }
+    // update Coach
+    public function UpdateCoach(Request $request ,$id){
+        $request->validate([
+            'nom'=>'required',
+            'prenom'=>'required',
+            'email'=>'required',
+        ]);
+        $data =User::findOrFail($id)->update([
+            'nom'=>$request->nom,
+            'prenom'=>$request->prenom,
+            'email'=>$request->email
+        ]);
+        return response()->json($data);
+
+    }
+    //delete Coach
+    public  function Delet_Coach($id){
+        $data=User::findOrFail($id)->delete();
+        return response()->json($data);
+    }
+
+
+    //end Function Coach
     // pour l'authentification d'un utilisateur:
     public function login(Request $loggedUser)
     {
@@ -56,80 +91,6 @@ class userController extends Controller
         {
             echo $th;
         }
-    }
-    // ajouter nouveau utilisateur:
-    public function adduser(Request $postedUser)
-    {
-        $userData = $postedUser->input();
-        try
-	    {
-            $user = new User;
-            $user->nom = $userData['LName'];
-            $user->prenom = $userData['FName'];
-            $user->email = $userData['Email'];
-            $user->password = $userData['Password'];
-            $user->save();
-            //---------
-            $postedUser->session()->flash('adding','L\'utilisateur été ajouté avec succés.');
-            return redirect('/users');
-        } catch (\Throwable $th) {
-            echo $th;
-        }
-        return $user;
-    }
-    // afficher la page de modification:
-    public function edituserGet($userid)
-    {
-        $updatedUser = User::find($userid);
-        return view('edituser', ['user' => $updatedUser]);
-    }
-    // modifier un utilisateur:
-    public function edituserPost(Request $modifiedUserData)
-    {
-        $modifiedUser = User::find($modifiedUserData->id); // pour trouver un utilisateur avec son id(///PRIMARY KEY).
-        $modifiedUser->nom = $modifiedUserData->LName;
-        $modifiedUser->prenom = $modifiedUserData->FName;
-        $modifiedUser->email = $modifiedUserData->Email;
-        $modifiedUser->password = $modifiedUserData->Password;
-        $result = $modifiedUser->save(); // dans ce cas, cette fonction va nous permettre de faire la modification.
-        if ($result) {
-            // session variable ...
-            return redirect('/users');
-        } else {
-            return ['result' => "Date hasn't been updated"];
-        }
-    }
-    // supprimer un utilisateur:
-    public function deleteuser($userid)
-    {
-        $deletedUser = User::find($userid);
-        $result = $deletedUser->delete();
-        if ($result) {
-	        // session variable ...
-            return redirect('/users');
-        } else {
-            return ['result' => "Date hasn't been updated"];
-        }
-    }
-
-    public function getFile(Request $request)
-    {
-        // $CourSelected = Cours::find($id);
-        if ($request->hasFile('photouploaded')) {
-            $nameFile = $request->photouploaded->path();
-        }else{
-            $nameFile = "no photo";
-        }
-        // $guessExtension = $request->file('photopath')->guessExtension();
-        // $fullPath = 'Storage/app/imageCour/' . $nameFile . $guessExtension;
-        // $request->file('photopath')->storeAs('imageCour',$nameFile .'.'. $guessExtension);
-        // $CourSelected->update([
-        //     'nom' => $request->nom,
-        //     'photopath' => $fullPath
-        // ]);
-
-        // return redirect()->route('Cour_view.index');
-        return $nameFile;
     }
 
     public function logoutUser(Request $request) {

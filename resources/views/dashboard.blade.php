@@ -5,7 +5,7 @@
         <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">{{$countUsers}}</div>
+                        <div class="numbers">{{$userCount}}</div>
                         <div class="cardName">Coach</div>
                     </div>
 
@@ -16,7 +16,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">80</div>
+                        <div class="numbers">{{$salleCount}}</div>
                         <div class="cardName">Salles</div>
                     </div>
 
@@ -27,8 +27,8 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">284</div>
-                        <div class="cardName">Cour</div>
+                        <div class="numbers">{{$courCount}}</div>
+                        <div class="cardName">Cours</div>
                     </div>
 
                     <div class="iconBx">
@@ -70,16 +70,6 @@
                     </div>
 
                     <table>
-                        @foreach ($users as $user)
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="{{ asset('imgs/customer02.jpg') }}" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>{{$user->nom}} <br> <span>{{$user->prenom}}</span></h4>
-                            </td>
-                        </tr>
-                        @endforeach
                     </table>
                 </div>
             </div>

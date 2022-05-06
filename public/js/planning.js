@@ -151,7 +151,7 @@ function getCoaches() {
     let givenCoaches;
     $.ajax({
         type:"GET",
-        url: "/coaches",
+        url: "/coach/all_Coaches",
         async: false,
         dataType: 'json',
         success: function(coaches){
@@ -166,8 +166,7 @@ function getCoaches() {
     return givenCoaches;
 }
 setInterval(() => {
-    // debugger
-    if (Coaches.length > 0) {
+    if (Coaches.length> 0) {
         SelectedCoachIndex++;
         if (SelectedCoachIndex == Coaches.length) {
             SelectedCoachIndex = 0;

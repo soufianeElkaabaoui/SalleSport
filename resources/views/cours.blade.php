@@ -12,142 +12,59 @@
                         <thead>
                             <tr>
 								<td>N°</td>
-                                <td>Description</td>
-                                <td>Prix</td>
+                                <td>Nom Cour</td>
+                                <td>Image</td>
                                 <td>Actions</td>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-								<td>1</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
 
-                            <tr>
-                                <td>2</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>3</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>4</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>5</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>6</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>7</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
-
-                            <tr>
-                                <td>8</td>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>
-								<span class="status delivered"><a href="#"><ion-icon name="create-outline"></ion-icon></a></span>
-								<span class="status return"><a href="#"><ion-icon name="trash-outline"></ion-icon></a></span>
-								</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <!-- ================= New Customers ================ -->
+                <form id="image-upload" enctype="multipart/form-data" method="POST">
+
                 <div class="recentCustomers">
                     <div class="cardHeader">
-                        <h2>New Cour</h2>
+                        <h2 id="Head">New Cours</h2>
                     </div>
-
-                    <form id="frm_AddCour" method="POST">
-						<!--   user name -->
+						<!--  Cour name -->
 						<div>
 							<span class="input-item">
 							   <i class="fa fa-user-circle"></i>
 							 </span>
-							<!--   user name Input-->
-							 <input class="form-input" id="txt-input" type="text" placeholder="Description" required>
+							<!--  Cour name Input-->
+
+                            <input type="hidden" name="id" id="idCours">
+							 <input name="nom" class="form-input" id="Nom_Cour" type="text" placeholder="Nom Cours" required>
+                             <span style="color:red; margin:10px" id="Nom_error_Cour"></span>
 						</div>
 
-						<!--   user name -->
+						<!--   photo_path name -->
 						<div>
 							<span class="input-item">
 							   <i class="fa fa-user-circle"></i>
 							 </span>
-							<!--   user name Input-->
-							 <input class="form-input" id="txt-input" type="text" placeholder="Prix" required>
+							<!--    photo_path Input-->
+							 <input name="path" class="form-input" id="Photo_path" type="file" placeholder="Choisie une image" required>
+                             <span style="color:red; margin:10px" id="PhotoPath_error_Cour"></span>
 						</div>
 
-						<!--   user name -->
-						<div>
-							<span class="input-item">
-							   <i class="fa fa-user-circle"></i>
-							 </span>
-							<!--   user name Input-->
-							 <input class="form-input" id="txt-input" type="text" placeholder="" required>
-						</div>
-
-						<!--   user name -->
-						<div>
-							<span class="input-item">
-							   <i class="fa fa-user-circle"></i>
-							 </span>
-							<!--   user name Input-->
-							 <input class="form-input" id="txt-input" type="text" placeholder="@UserName" required>
-						</div>
                         <div>
-                            <button type="submit" class="log-in"> Ajouter </button>
+							 <img id="selected_photo" style='margin-top: 15px;width: 80px;height: 80px;border-radius: 50%;' src="{{asset('storage/files/no_image.png')}}" alt="image cours">
+						</div>
+
+                        <div>
+                            <button type="submit" class="log-in upload-image" id="btn_save_Cour"> Ajouter </button>
+                            <button type="submit" class="log-in upload-image" id="btn_update_Cour"> update </button>
                         </div>
-					</form>
                 </div>
+            </form>
             </div>
+@endsection
+@section('scripts')
+<script src="{{asset('js/cour.js')}}"></script>
 @endsection
