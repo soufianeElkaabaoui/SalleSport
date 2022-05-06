@@ -21,7 +21,7 @@ class CreatePlanningsTable extends Migration
             $table->unsignedBigInteger('idCour');
             $table->unsignedBigInteger('idSalle');
             $table->unsignedBigInteger('idUser');
-            $table->foreign('idCour')->references('id')->on('Cour');
+            $table->foreign('idCour')->references('id')->on('Cours');
             $table->foreign('idSalle')->references('id')->on('Salles');
             $table->foreign('idUser')->references('id')->on('Users');
             $table->timestamps();

@@ -50,6 +50,7 @@ class CoureController extends Controller
             $file_name = time() . '_' . $file->getClientOriginalName();
             $upload = $file->storeAs($path, $file_name);
         }
+        // return response()->json([$validator, $file_name, $upload]);
         if ($upload) {
             $data = Cour::insert([
                 'nom' => $request->nom,

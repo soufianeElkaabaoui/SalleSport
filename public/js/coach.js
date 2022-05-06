@@ -7,7 +7,7 @@ $.ajaxSetup({
     }
 })
 
-//---------------------Start Clear data----------------------- 
+//---------------------Start Clear data-----------------------
 function ClearData() {
     $("#nom").val('');
    $("#prenom").val('');
@@ -16,9 +16,9 @@ function ClearData() {
     $("#prenom_error_coach").text('');
     $("#email_error_coach").text('');
   }
-  //---------------------ENd clear  data----------------------- 
-  //---------------------Start afficher Coach----------------------- 
-  
+  //---------------------ENd clear  data-----------------------
+  //---------------------Start afficher Coach-----------------------
+
 function AllCoaches() {
 $.ajax({
    type: "GET",
@@ -26,7 +26,7 @@ $.ajax({
    dataType: "json",
    success: function (response) {
        var data=""
-       $.each(response, function (key, value) { 
+       $.each(response, function (key, value) {
            data=data+"<tr>"
            data=data+"<td>"+value.id+"</td>"
            data=data+"<td>"+value.nom+"</td>"
@@ -43,9 +43,9 @@ $.ajax({
 });
  }
  AllCoaches();
-//---------------------end afficher Coach----------------------- 
+//---------------------end afficher Coach-----------------------
 
-//---------------------Start Add Coach----------------------- 
+//---------------------Start Add Coach-----------------------
  function AddCoach() {
     var nom =$("#nom").val();
     var prenom =$("#prenom").val();
@@ -168,7 +168,7 @@ function DeleteCoach(id_coach) {
                     success: function (response) {
                         $("#save").show();
                         $("#update").hide();
-                    
+
                         ClearData();
                         AllCoaches();
                     }
@@ -189,6 +189,6 @@ function DeleteCoach(id_coach) {
                     )
                 }
                 })
-     
+
     }
   //---------------------end Delete Salle----------------------- EditSalle

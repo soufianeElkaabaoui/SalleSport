@@ -45,12 +45,13 @@ class userController extends Controller
         return response()->json($data);
     }
     // update Coach
-    public function UpdateCoach(Request $request ,$id){
+    public function UpdateCoach(Request $request, $id){
         $request->validate([
             'nom'=>'required',
             'prenom'=>'required',
             'email'=>'required',
         ]);
+
         $data =User::findOrFail($id)->update([
             'nom'=>$request->nom,
             'prenom'=>$request->prenom,

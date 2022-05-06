@@ -20,7 +20,7 @@ class SalleController extends Controller
      public function Salle_Count()
      {
          //------------------
-         $SalleRows = _salle::all();
+         $SalleRows = Salle::all();
          $SalleCount = count($SalleRows);
          return $SalleCount;
      }

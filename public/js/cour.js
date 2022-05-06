@@ -88,6 +88,7 @@ function Add_Cour(formdata) {
         contentType: false,
         processData: false,
         success: (data) => {
+            debugger
             ClearData();
             AllCours();
             //start alert

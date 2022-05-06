@@ -9,6 +9,7 @@ class User extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nom', 'prenom', 'email', 'type', 'image'];
     public function salles($selectedDate)
     {
         return $this->belongsToMany(Salle::class, 'Plannings', 'idUser', 'idSalle')->as('plannings')->withPivot('date_seance', 'start_time', 'end_time')->wherePivot('date_seance', $selectedDate);
@@ -17,8 +18,8 @@ class User extends Model
     {
         // return $this->belongsToMany(Cour::class, 'Plannings', 'idUser', 'idCour')->as('plannings')->withPivot('date_seance', 'start_time', 'end_time'); // without conditions
         return $this->belongsToMany(Cour::class, 'Plannings', 'idUser', 'idCour')
-                        ->as('plannings')
-                        ->withPivot('date_seance', 'start_time', 'end_time')
-                        ->wherePivot('date_seance', $selectedDate); // with conditions
+            ->as('plannings')
+            ->withPivot('date_seance', 'start_time', 'end_time')
+            ->wherePivot('date_seance', $selectedDate); // with conditions
     }
 }
